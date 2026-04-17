@@ -39,4 +39,8 @@ def change_password(filename: str, website: str, password: str) -> bool:
     return True
 
 def add_login(filename: str, website_name: str, username: str, password: str) -> None:
-    pass
+    encrypted_pass = caesar_encrypt(password)
+    new_row = [website_name, username, encrypted_pass]
+    with open(filename, mode='a', newline='') as xfile:
+        writer = csv.writer(xfile)
+        writer.writerow(new_row)
