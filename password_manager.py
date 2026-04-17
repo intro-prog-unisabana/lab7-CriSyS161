@@ -25,10 +25,21 @@ def encrypt_passwords_in_file(filename: str) -> None:
 
 
 def change_password(filename: str, website: str, password: str) -> bool:
-    """TODO: Parte 3."""
-    pass
-
+    with open(filename, mode='r') as afile:
+        reader = csv.reader(afile)
+        rows = [row for row in reader if row]
+    found = False
+    for i in range(1, len(rows)):
+        if rows[i][0] == website:
+            rows[i][2] = caesar_encrypt(password)
+            found = True
+            break
+    if not found:
+        return False
+    with open(filename, mode='w', newline='') as afile:
+        writer = csv.writer(afile)
+        writer.writerows(rows)
+    return True
 
 def add_login(filename: str, website_name: str, username: str, password: str) -> None:
-    """TODO: Parte 4."""
-    pass
+    
