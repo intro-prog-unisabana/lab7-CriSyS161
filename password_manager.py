@@ -20,9 +20,6 @@ def encrypt_passwords_in_file(filename: str) -> None:
     with open(filename, mode='w', newline='') as file:
         writer = csv.writer(file)
         writer.writerows(rows)
-        
-
-
 
 def change_password(filename: str, website: str, password: str) -> bool:
     with open(filename, mode='r') as afile:
@@ -42,4 +39,4 @@ def change_password(filename: str, website: str, password: str) -> bool:
     return True
 
 def add_login(filename: str, website_name: str, username: str, password: str) -> None:
-    
+    pass
